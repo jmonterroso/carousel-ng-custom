@@ -8,7 +8,6 @@ import {Observable} from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'slider-dev';
   carouselItems$: Observable<any>;
 
   loadImages(): void {
