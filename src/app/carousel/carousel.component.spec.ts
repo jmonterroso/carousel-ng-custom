@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {animate, AnimationBuilder, AnimationFactory, AnimationPlayer, style} from '@angular/animations';
 import { CarouselComponent } from './carousel.component';
+
 
 describe('CarouselComponent', () => {
   let component: CarouselComponent;
@@ -22,4 +23,5 @@ describe('CarouselComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

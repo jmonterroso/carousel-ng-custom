@@ -1,12 +1,13 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed, async, inject} from '@angular/core/testing';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
-import { ImagesService } from './images.service';
+import {ImagesService} from './images.service';
 
 describe('ImagesService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be created', () => {
-    const service: ImagesService = TestBed.get(ImagesService);
-    expect(service).toBeTruthy();
-  });
+  it(`should create`, async(inject([HttpTestingController, ImagesService],
+    (httpClient: HttpTestingController, imagesService: ImagesService) => {
+      expect(imagesService).toBeTruthy();
+    })));
 });

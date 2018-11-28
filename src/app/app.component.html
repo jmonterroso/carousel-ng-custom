@@ -1,6 +1,5 @@
 <app-carousel *ngIf="carouselItems$ | async" slideMargin="10" lg="5" md="3" sm="1">
   <ng-container *ngFor="let item of carouselItems$ | async;">
-
     <ng-container *carouselItem>
       <img [src]="item.largeImageURL" class="img-fluid j-carousel-img"/>
       <div class="row j-carousel-caption mt-auto">
