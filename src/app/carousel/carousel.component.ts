@@ -30,7 +30,6 @@ export class CarouselComponent implements AfterViewInit {
   @ViewChild('carouselInner') private carouselInner: ElementRef;
   @ViewChildren('carouselItem', {read: ElementRef}) private itemsElements: QueryList<ElementRef>;
   @Input() timing = '250ms ease-in';
-  @Input() showControls = true;
   @Input() sm: number = 1;
   @Input() md: number = 2;
   @Input() lg: number = 5;
