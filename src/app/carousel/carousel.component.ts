@@ -30,10 +30,11 @@ export class CarouselComponent implements AfterViewInit {
   @ViewChild('carouselInner') private carouselInner: ElementRef;
   @ViewChildren('carouselItem', {read: ElementRef}) private itemsElements: QueryList<ElementRef>;
   @Input() timing = '250ms ease-in';
-  @Input() sm: number = 1;
-  @Input() md: number = 2;
-  @Input() lg: number = 5;
-  @Input() xlSlidesToDisplay: number = 8;
+  @Input() sm: 1;
+  @Input() md: 2;
+  @Input() lg: 5;
+  @Input() xl: 5;
+
   @Input() slideMargin: 0;
   private slidesToDisplay: number = 5;
   private player: AnimationPlayer;
@@ -120,7 +121,7 @@ export class CarouselComponent implements AfterViewInit {
       this.slidesToDisplay = +this.lg;
     }
     if (window.innerWidth >= this.breakpoints.xl) {
-      this.slidesToDisplay = +this.xlSlidesToDisplay;
+      this.slidesToDisplay = +this.xl;
     }
     this.itemWidth = this.itemsElements.first.nativeElement.getBoundingClientRect().width;
     this.slideWidth = (this.carousel.nativeElement.offsetWidth / this.slidesToDisplay) - this.slideMargin;
