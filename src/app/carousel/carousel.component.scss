@@ -1,0 +1,84 @@
+
+$carousel-wrapper-bg: #E9EEE7;
+$carousel-text: #036898;
+$carousel-button: #30739F;
+
+app-carousel{
+
+}
+.j-carousel-wrapper {
+  //overflow: hidden;
+  background: $carousel-wrapper-bg;
+}
+
+.j-carousel {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  &-inner {
+    display: flex;
+    background: #fff;
+  }
+  &-title{
+    color: $carousel-text;
+  }
+  &-btn{
+    background: $carousel-button;
+    border-color: $carousel-button;
+  }
+  &-item{
+    position: relative;
+    padding-bottom: 45px;
+  }
+  &-caption{
+    //position: absolute;
+    //bottom: 0;
+    color: $carousel-text;
+    font-size: 16px;
+  }
+  &-arrow{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    position: absolute;
+    background: rgba(255,255,255,0.5);
+    top: 40px;
+    &.next{
+      right: -30px;
+    }
+    &.prev{
+      left:-30px;
+      transform: rotate(-180deg);
+    }
+  }
+  &-arrows{
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    z-index: 1;
+
+    width: 100%;
+
+    svg{
+      fill: $carousel-text;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+
+    &-prev{
+
+    }
+  }
+
+
+}
+
+
