@@ -2,10 +2,8 @@ import {
   AfterViewInit,
   Component,
   ContentChildren,
-  Directive,
   ElementRef,
   Input,
-  OnInit,
   QueryList,
   ViewChild,
   ViewChildren
@@ -21,10 +19,8 @@ import {animate, AnimationBuilder, AnimationFactory, AnimationPlayer, style} fro
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent implements OnInit, AfterViewInit {
+export class CarouselComponent implements AfterViewInit {
 
-  ngOnInit(): void {
-  }
 
   constructor(private builder: AnimationBuilder) {
   }
@@ -35,26 +31,31 @@ export class CarouselComponent implements OnInit, AfterViewInit {
   @ViewChildren('carouselItem', {read: ElementRef}) private itemsElements: QueryList<ElementRef>;
   @Input() timing = '250ms ease-in';
   @Input() showControls = true;
-  private slidesToDisplay: number = 5;
   @Input() sm: number = 1;
   @Input() md: number = 2;
   @Input() lg: number = 5;
   @Input() xlSlidesToDisplay: number = 8;
   @Input() slideMargin: 0;
+  private slidesToDisplay: number = 5;
   private player: AnimationPlayer;
   private itemWidth: number;
   private currentSlide = 0;
   slideWidth: number = 0;
-  carouselWrapperStyle = {};
   slideWidthStyle = {};
-  showNext = true;
-  showPrev = true;
+  /**
+   * Breakpoints supported same as bootstrap
+   */
   private breakpoints = {
     xl: 1200,
     lg: 992,
     md: 768,
     sm: 576
   };
+
+  /**
+   * This Method slide the carousel based on the method requested
+   * @param type
+   */
 
   slide(type: string) {
     let nextSlide: number;
@@ -76,7 +77,10 @@ export class CarouselComponent implements OnInit, AfterViewInit {
     this.player.play();
   }
 
-
+  /**
+   * Method that moves the carousel accordingly to its dimensions
+   * @param offset
+   */
   private buildAnimation(offset) {
     if (offset < 0) {
       offset = 0;
@@ -86,20 +90,27 @@ export class CarouselComponent implements OnInit, AfterViewInit {
     ]);
   }
 
+  /**
+   * Method to be used in the next button element
+   */
+
   next() {
 
     if (this.currentSlide + (this.slidesToDisplay) >= this.items.length) return;
     this.slide('next');
   }
 
+  /**
+   * Method to be used in the prev button element
+   */
   prev() {
     if (this.currentSlide === 0) return;
     this.slide('prev');
   }
 
-// constructor( private builder : AnimationBuilder ) {
-// }
-
+  /**
+   * This method calculates the proportions of each slide and assign based on the different breakpoints
+   */
   calculateProportions() {
     this.slidesToDisplay = +this.sm;
     if (window.innerWidth >= this.breakpoints.md) {
@@ -118,9 +129,12 @@ export class CarouselComponent implements OnInit, AfterViewInit {
       width: `${this.slideWidth}px`,
       'margin-right': `${this.slideMargin}px`
     };
-    console.log(this.slideWidthStyle, 'slideWidthStyle '); //deleteinbuild
+
   }
 
+  /**
+   * This method validates the viewport size and resize components as needed to match with the viewport size
+   */
   viewportResize() {
     const that = this;
     window.addEventListener('resize', function () {

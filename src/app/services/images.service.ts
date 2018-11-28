@@ -12,6 +12,11 @@ export class ImagesService {
   key = '9656065-a4094594c34f9ac14c7fc4c39';
   config: object = {key: this.key, 'image_type': 'photo', 'min_width': 200, 'min_height': 200, 'orientation': 'horizontal'};
 
+  /**
+   * This metod returns an observable with the images formatted to be usd in the component
+   * @param q string receives the query to the images to be displayed
+   */
+
   getImages(q: string) {
     // returns the formatted array from pixabay
     return this.http.get(this.url, {params: {...this.config, q: q}})
